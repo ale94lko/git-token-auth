@@ -14,6 +14,14 @@ if [ "$1" == "init" ]; then
     exit 0
 fi
 
+# Remove local credential.helper entries for this repository
+if [ "$1" == "uninstall" ]; then
+    git config --local --unset-all credential.helper 2>/dev/null || true
+    echo "✅ [git-token-auth] Removed from this repository."
+    echo "To remove the binary: rm -f ~/.local/bin/git-token-auth"
+    exit 0
+fi
+
 # Git credential helper protocol: first arg is get | store | erase
 # Only "get" should prompt; store/erase must be silent no-ops
 # (otherwise Git asks for the token a second time after a successful auth).
@@ -24,7 +32,7 @@ case "${1:-}" in
     get)
         ;;
     *)
-        echo "Usage: git-token-auth init|get|store|erase" >&2
+        echo "Usage: git-token-auth init|uninstall|get|store|erase" >&2
         exit 1
         ;;
 esac
