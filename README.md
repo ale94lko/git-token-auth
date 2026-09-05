@@ -28,13 +28,13 @@ In shared environments where developers share system accounts, saving global cre
 Run the installation script to place the binary into `~/.local/bin`:
 
 ```bash
-curl -sSL [https://raw.githubusercontent.com/ale94lko/git-token-auth/main/install.sh](https://raw.githubusercontent.com/ale94lko/git-token-auth/main/install.sh) | bash
+curl -sSL https://raw.githubusercontent.com/ale94lko/git-token-auth/main/bin/install.sh | bash
 ```
 
 ### Option 2: Manual Clone
 
 ```bash
-git clone [https://github.com/ale94lko/git-token-auth.git](https://github.com/ale94lko/git-token-auth.git)
+git clone https://github.com/ale94lko/git-token-auth.git
 cd git-token-auth
 chmod +x bin/git-token-auth
 # Optionally add ./bin to your PATH or copy to /usr/local/bin
@@ -69,9 +69,7 @@ Already up to date.
 ## How It Works
 `git-token-auth` leverages Git's native `credential.helper` hook configured at the local repository level (`.git/config`):
 
-```
-Ini, TOML
-
+```ini
 [credential]
     helper = !/path/to/git-token-auth
 ```
