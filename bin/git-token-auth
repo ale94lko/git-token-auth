@@ -32,7 +32,7 @@ case "${1:-}" in
     get)
         ;;
     *)
-        echo "Usage: git-token-auth init|uninstall|get|store|erase" >&2
+        echo "Usage: git-token-auth <init|uninstall>" >&2
         exit 1
         ;;
 esac
