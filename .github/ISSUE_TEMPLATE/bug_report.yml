@@ -1,0 +1,82 @@
+name: Bug report
+description: Create a report to help us improve
+title: "Bug: "
+labels: ['type: Bug']
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+
+        Before you begin, **please ensure that there are no [existing issues](https://github.com/ale94lko/git-token-auth/issues), whether still open or closed, related to your report**.
+        If there is, your report will be closed promptly.
+        ---
+
+  - type: input
+    id: git-version
+    attributes:
+      label: Git version
+      description: Output of `git --version`
+      placeholder: e.g. git version 2.47.0
+    validations:
+      required: true
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      description: Where did you run git-token-auth?
+      multiple: true
+      options:
+        - Linux
+        - macOS
+        - Windows (Git Bash / WSL)
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: install-method
+    attributes:
+      label: Installation method
+      description: How did you install git-token-auth?
+      multiple: true
+      options:
+        - Quick install (`install.sh`)
+        - Manual clone
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      placeholder: Tell us what you see!
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Steps to Reproduce
+      description: Steps to reproduce the behavior.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Expected Output
+      description: What do you expect to happen instead of this bug?
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Anything else?
+      description: |
+        Links? References? Anything that will give us more context about the issue you are encountering!
+
+        Tip: You can attach images or log files by clicking this area to highlight it and then dragging files in.
+    validations:
+      required: false

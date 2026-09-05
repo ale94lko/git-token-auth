@@ -1,5 +1,14 @@
 # git-token-auth
 
+<p>
+  <a href="https://github.com/ale94lko/git-token-auth/blob/main/LICENSE" target="_blank">
+    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-green.svg" />
+  </a>
+  <a href="https://github.com/ale94lko/repo-health-score">
+    <img src="https://github.com/ale94lko/git-token-auth/blob/output/badge.svg"/>
+  </a>
+</p>
+
 A lightweight, zero-dependency Git credential helper designed for shared development environments (e.g., Virtual Machines, jump hosts, or shared servers).
 
 It bypasses the redundant `Username` prompt from Git HTTPS authentication and prompts **only** for your GitHub Personal Access Token (PAT).
@@ -110,6 +119,10 @@ export PATH="$HOME/.local/bin:$PATH"
 ```
 
 When Git requests authentication credentials, the helper outputs username=x-access-token (the standard username header accepted by GitHub for PATs) alongside the interactively collected token.
+
+## Contributing
+
+Please read through our [contributing guidelines](https://github.com/ale94lko/git-token-auth/blob/main/.github/CONTRIBUTING.md).
 
 ## License
 
