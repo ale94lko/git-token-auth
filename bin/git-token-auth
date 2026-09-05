@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Exit on error
+set -e
+
+# Handle setup/installation flag for a repository
+if [ "$1" == "init" ]; then
+    SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/$(basename "${BASH_SOURCE[0]}")"
+    git config --local credential.helper "!\"$SCRIPT_PATH\""
+    echo "✅ [git-token-auth] Configured successfully for this repository."
+    echo "Git will now prompt only for your Personal Access Token."
+    exit 0
+fi
+
+# Parse Git credential helper stdin
+while read -r line; do
+    [ -z "$line" ] && break
+done
+
+# Read token directly from terminal
+exec < /dev/tty
+read -sp "🔑 Enter your GitHub Personal Access Token: " TOKEN
+echo "" > /dev/tty
+
+if [ -z "$TOKEN" ]; then
+    echo "❌ Error: Token cannot be empty." >&2
+    exit 1
+fi
+
+# Output expected credentials format for Git
+echo "username=x-access-token"
+echo "password=$TOKEN"
