@@ -28,4 +28,4 @@ In shared environments where developers share system accounts, saving global cre
 Run the installation script to place the binary into `~/.local/bin`:
 
 ```bash
-curl -sSL [https://raw.githubusercontent.com/your-username/git-token-auth/main/install.sh](https://raw.githubusercontent.com/your-username/git-token-auth/main/install.sh) | bash
+curl -sSL [https://raw.githubusercontent.com/ale94lko/git-token-auth/main/install.sh](https://raw.githubusercontent.com/ale94lko/git-token-auth/main/install.sh) | bash
