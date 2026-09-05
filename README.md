@@ -31,6 +31,12 @@ Run the installation script to place the binary into `~/.local/bin`:
 curl -sSL https://raw.githubusercontent.com/ale94lko/git-token-auth/main/bin/install.sh | bash
 ```
 
+If `git-token-auth` is not found after install, add `~/.local/bin` to your PATH for the current session:
+
+```bash
+export PATH="$HOME/.local/bin:$PATH"
+```
+
 ### Option 2: Manual Clone
 
 ```bash
