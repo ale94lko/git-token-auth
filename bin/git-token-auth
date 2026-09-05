@@ -6,13 +6,30 @@ set -e
 # Handle setup/installation flag for a repository
 if [ "$1" == "init" ]; then
     SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/$(basename "${BASH_SOURCE[0]}")"
-    git config --local credential.helper "!\"$SCRIPT_PATH\""
+    # Clear inherited helpers so only this one runs for the repo
+    git config --local credential.helper ""
+    git config --local --add credential.helper "!\"$SCRIPT_PATH\""
     echo "✅ [git-token-auth] Configured successfully for this repository."
     echo "Git will now prompt only for your Personal Access Token."
     exit 0
 fi
 
-# Parse Git credential helper stdin
+# Git credential helper protocol: first arg is get | store | erase
+# Only "get" should prompt; store/erase must be silent no-ops
+# (otherwise Git asks for the token a second time after a successful auth).
+case "${1:-}" in
+    store|erase)
+        exit 0
+        ;;
+    get)
+        ;;
+    *)
+        echo "Usage: git-token-auth init|get|store|erase" >&2
+        exit 1
+        ;;
+esac
+
+# Drain Git credential helper stdin (protocol, host, path, ...)
 while read -r line; do
     [ -z "$line" ] && break
 done
