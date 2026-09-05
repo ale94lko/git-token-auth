@@ -72,6 +72,27 @@ Output:
 Already up to date.
 ```
 
+## Uninstall
+
+1. Remove the binary:
+
+```bash
+rm -f ~/.local/bin/git-token-auth
+```
+
+2. In each repository where you ran `git-token-auth init`, unset the local credential helper:
+
+```bash
+git config --local --unset credential.helper
+```
+
+3. If the installer added `~/.local/bin` to your shell config, remove these lines from `~/.bashrc` (or `~/.zshrc` / `~/.profile`):
+
+```bash
+# Added by git-token-auth installer
+export PATH="$HOME/.local/bin:$PATH"
+```
+
 ## How It Works
 `git-token-auth` leverages Git's native `credential.helper` hook configured at the local repository level (`.git/config`):
 
